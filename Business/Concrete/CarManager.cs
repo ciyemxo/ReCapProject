@@ -10,9 +10,7 @@ namespace Business.Concrete
     public class CarManager : ICarService
     {
         ICarDal _carDal;
-        IBrandDal _brandDal;
-
-        
+     
         public CarManager(ICarDal carDal)
         {
             _carDal = carDal;
