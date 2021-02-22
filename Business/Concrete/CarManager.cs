@@ -10,41 +10,31 @@ namespace Business.Concrete
     public class CarManager : ICarService
     {
         ICarDal _carDal;
+        IBrandDal _brandDal;
 
-        //Costructor
+        
         public CarManager(ICarDal carDal)
         {
             _carDal = carDal;
         }
-        //User authorization simulation
-        bool userAuthorization = true;
-        //Operations
+
+        
         public void Add(Car car)
         {
-            Car carToCheck = _carDal.GetById(car.Id);
-            if (carToCheck != null)
-            {
-                Console.WriteLine("Id numarası kullanılıyor");
-            }
-            else
+            if (car.Description.Length >= 2 && car.DailyPrice > 0)
             {
                 _carDal.Add(car);
-                Console.WriteLine("Araba eklendi : " + car.Description + car.ModelYear);
-            }
-        }
-        
-        public void Delete(Car car)
-        {
-            
-            if (userAuthorization == true)
-            {
-                _carDal.Delete(car);
-                Console.WriteLine("Araba silindi : " + car.Description + car.ModelYear);
             }
             else
             {
-                Console.WriteLine("Bu işlemi yapmaya yetkiniz yok.");
-            } 
+                Console.WriteLine("Araba eklenemedi. Araba ismi çok kısa ya da fiyat sıfırdan küçük.");
+            }
+                
+        }
+
+        public void Delete(Car car)
+        {
+            _carDal.Delete(car);
         }
 
         public List<Car> GetAll()
@@ -52,15 +42,25 @@ namespace Business.Concrete
             return _carDal.GetAll();
         }
 
-        public Car GetById(int carId)
+        public List<Car> GetCarsByBrandId(int brandId)
         {
-            return _carDal.GetById(carId);
+            return _carDal.GetAll(c=> c.BrandId == brandId);
+        }
+
+        public List<Car> GetCarsByColorId(int colorId)
+        {
+            return _carDal.GetAll(c => c.ColorId == colorId);
         }
 
         public void Update(Car car)
         {
             _carDal.Update(car);
-            Console.WriteLine("Araba güncellendi: " + car.Description);
         }
+
+        
+
+
+
+
     }
 }

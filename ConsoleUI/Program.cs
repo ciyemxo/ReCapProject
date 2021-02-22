@@ -1,6 +1,7 @@
 ﻿using System;
 using Business.Concrete;
 using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
 
@@ -10,28 +11,18 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            CarManager carManager = new CarManager(new InMemoryCarDal());
+            CarManager carManager = new CarManager(new EfCarDal());
 
-            carManager.Add(new Car { Id = 6, BrandId = 2, ColorId = 7, DailyPrice = 432, ModelYear = 2009, Description = "Yeni eklenen Araba" });
+            carManager.Add(
+                new Car { Id=1 ,
+                    BrandId = 1,
+                    ColorId= 1 ,
+                    ModelYear = 2021,
+                    DailyPrice = 450,
+                    Description = "Renault Megane 1.0 Joy 2021 Model Kırmızı"}
+                );
 
-            //foreach (var car in carManager.GetAll())
-            //{
-            //    Console.WriteLine(car.Description);
-            //}
-
-            Car carToDelete = carManager.GetById(1);
-            carManager.Delete(carToDelete);
-
-            //güncelleme kısmı
-            var result = carManager.GetById(5);
-            carManager.Update(result);
-            result.Description = "güncellenen araba";
-
-            //Hepsini listeleme kısmı
-            foreach (var car in carManager.GetAll())
-            {
-                Console.WriteLine(car.Description);
-            }
+ 
 
         }
 
