@@ -4,6 +4,7 @@ using Business.Abstract;
 using DataAccess.Abstract;
 using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
+using Entities.DTOs;
 
 namespace Business.Concrete
 {
@@ -22,10 +23,11 @@ namespace Business.Concrete
             if (car.Description.Length >= 2 && car.DailyPrice > 0)
             {
                 _carDal.Add(car);
+                Console.WriteLine("Araba eklendi: " + car.Description);
             }
             else
             {
-                Console.WriteLine("Araba eklenemedi. Araba ismi çok kısa ya da fiyat sıfırdan küçük.");
+                Console.WriteLine("Araba eklenemedi. Açıklama iki karakterden kısa ya da fiyat sıfırdan küçük.");
             }
                 
         }
@@ -38,6 +40,11 @@ namespace Business.Concrete
         public List<Car> GetAll()
         {
             return _carDal.GetAll();
+        }
+
+        public List<CarDetailDto> GetCarDetails()
+        {
+            return _carDal.GetCarDetails();
         }
 
         public List<Car> GetCarsByBrandId(int brandId)
