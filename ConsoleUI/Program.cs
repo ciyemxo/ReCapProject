@@ -11,61 +11,25 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            //AddColor();
-
-            //AddBrand();
-
-            //AddNewCar();
-
-            //ListAllCars();
-
+  
             CarManager carManager = new CarManager(new EfCarDal());
-            foreach (var car in carManager.GetCarDetails())
+            var result = carManager.GetCarDetails();
+
+            if (result.Success)
             {
-                Console.WriteLine(car.BrandName + "-" + car.ColorName + "-" + car.Description +  "     Fiyatı: " + car.DailyPrice);
+                foreach (var car in result.Data)
+                {
+                    Console.WriteLine(car.BrandName + "-" + car.ColorName + "-" + car.Description + "     Fiyatı: " + car.DailyPrice);
+                }
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
             }
 
-        }//extract edilmiş methodlar
 
-        private static void ListAllCars()
-        {
-            CarManager carManager = new CarManager(new EfCarDal());
-            foreach (var car in carManager.GetAll())
-            {
-                Console.WriteLine(car.Description);
-            }
+
         }
+    }
 
-
-        //Araba ekleme methodu
-        private static void AddNewCar()
-        {
-            CarManager carManager = new CarManager(new EfCarDal());
-            carManager.Add(new Car
-            {
-                Id = 4,
-                BrandId = 2,
-                ColorId = 1,
-                DailyPrice = 525,
-                ModelYear = 2016,
-                Description = "Audi TT Coupe 2.0 Quattro S-Tronic"
-            });
-        }
-
-        //marka ekleme methodu
-        private static void AddBrand()
-        {
-            BrandManager brandManager = new BrandManager(new EfBrandDal());
-            brandManager.Add(new Brand { BrandId = 6, BrandName = "Kia" });
-        }
-
-        //renk ekleme methodu
-        private static void AddColor()
-        {
-            ColorManager colorManager = new ColorManager(new EfColorDal());
-
-            colorManager.Add(
-                new Color { ColorId = 5, ColorName = "Lacivert" });
-        }
-    } 
 }
