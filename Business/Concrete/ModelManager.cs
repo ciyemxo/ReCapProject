@@ -9,35 +9,35 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    public class ColorManager : IColorService
+    public class ModelManager : IModelService
     {
-        IColorDal _colorDal;
+        IModelDal _modelDal;
 
-        public ColorManager(IColorDal colorDal)
+        public ModelManager(IModelDal modelDal)
         {
-            _colorDal = colorDal;
+            _modelDal = modelDal;
         }
 
-        public IResult Add(Color color)
+        public IResult Add(Model model)
         {
-            _colorDal.Add(color);
+            _modelDal.Add(model);
             return new SuccessResult(Messages.ProcedureSuccessful);
         }
 
-        public IResult Delete(Color color)
+        public IResult Delete(Model model)
         {
-            _colorDal.Delete(color);
+            _modelDal.Delete(model);
             return new SuccessResult(Messages.ProcedureSuccessful);
         }
 
-        public IDataResult<List<Color>> GetAll()
+        public IDataResult<List<Model>> GetAll()
         {
-            return new SuccessDataResult<List<Color>>(_colorDal.GetAll());
+            return new SuccessDataResult<List<Model>>(_modelDal.GetAll());
         }
 
-        public IResult Update(Color color)
+        public IResult Update(Model model)
         {
-            _colorDal.Update(color);
+            _modelDal.Update(model);
             return new SuccessResult(Messages.ProcedureSuccessful);
         }
     }
