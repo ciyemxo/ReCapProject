@@ -11,7 +11,7 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            //GetCarDetails();
+            GetCarDetails();
 
             //AddUser();
 
@@ -19,6 +19,12 @@ namespace ConsoleUI
 
             //AddCar();
 
+            //AddRental();
+
+        }
+
+        private static void AddRental()
+        {
             RentalManager rentalManager = new RentalManager(new EfRentalDal());
             var result = rentalManager.Add(new Rental
             {
@@ -28,7 +34,6 @@ namespace ConsoleUI
                 ReturnDate = new DateTime(2021, 2, 27)
 
             }); Console.WriteLine(result.Message);
-
         }
 
         private static void AddCar()
