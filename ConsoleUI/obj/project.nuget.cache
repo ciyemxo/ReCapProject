@@ -1,12 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "SJsLqfvbrFaqEyKV7nXdUyhAL26YkkB6XSjS/UC3ftDjYgI6Z0CTNvUVJ3pUTnBgnA4Vkx5PjhfR3B40GEEa8A==",
+  "dgSpecHash": "eNRxFCDM38YIX6Xu/QoxVay01PFUExzni5meEH0r5eKUQrRtzNAQoxjtfxZ3BvoBwytrT91gWgso/5tYBAiqew==",
   "success": true,
   "projectFilePath": "C:\\Users\\Win7\\source\\repos\\ReCapProject\\ConsoleUI\\ConsoleUI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Win7\\.nuget\\packages\\autofac\\6.1.0\\autofac.6.1.0.nupkg.sha512",
+    "C:\\Users\\Win7\\.nuget\\packages\\autofac.extensions.dependencyinjection\\7.1.0\\autofac.extensions.dependencyinjection.7.1.0.nupkg.sha512",
     "C:\\Users\\Win7\\.nuget\\packages\\autofac.extras.dynamicproxy\\6.0.0\\autofac.extras.dynamicproxy.6.0.0.nupkg.sha512",
     "C:\\Users\\Win7\\.nuget\\packages\\castle.core\\4.4.0\\castle.core.4.4.0.nupkg.sha512",
+    "C:\\Users\\Win7\\.nuget\\packages\\fluentvalidation\\9.5.1\\fluentvalidation.9.5.1.nupkg.sha512",
     "C:\\Users\\Win7\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Win7\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.1\\microsoft.bcl.hashcode.1.1.1.nupkg.sha512",
     "C:\\Users\\Win7\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
