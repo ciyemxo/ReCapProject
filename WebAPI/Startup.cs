@@ -42,6 +42,9 @@ namespace WebAPI
                 app.UseDeveloperExceptionPage();
             }
 
+            //bunu manual ekledim
+            app.UseStaticFiles();
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
