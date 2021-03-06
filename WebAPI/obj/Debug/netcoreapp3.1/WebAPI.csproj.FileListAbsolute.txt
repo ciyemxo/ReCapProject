@@ -72,3 +72,4 @@ C:\Users\Win7\source\repos\ReCapProject\WebAPI\bin\Debug\netcoreapp3.1\Autofac.E
 C:\Users\Win7\source\repos\ReCapProject\WebAPI\bin\Debug\netcoreapp3.1\Castle.Core.dll
 C:\Users\Win7\source\repos\ReCapProject\WebAPI\bin\Debug\netcoreapp3.1\FluentValidation.dll
 C:\Users\Win7\source\repos\ReCapProject\WebAPI\bin\Debug\netcoreapp3.1\libman.json
+C:\Users\Win7\source\repos\ReCapProject\WebAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
