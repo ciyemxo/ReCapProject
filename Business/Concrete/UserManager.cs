@@ -32,10 +32,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.UserAdded);
         }
 
-        IDataResult<User> IUserService.GetByMail(string email)
-        {
-            return new SuccessDataResult<User>(_userDal.Get(u => u.Email == email));
-        }
+
 
         public IDataResult<List<User>> Getall()
         {
@@ -57,6 +54,11 @@ namespace Business.Concrete
         {
             _userDal.Delete(user);
             return new SuccessResult();
+        }
+
+        public User GetByMail(string email)
+        {
+            return _userDal.Get(u => u.Email == email);
         }
     }
 }

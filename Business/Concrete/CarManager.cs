@@ -4,6 +4,8 @@ using Business.Abstract;
 using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Transaction;
 using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation.FluentValidation;
 using Core.Utilities.Business;
@@ -27,9 +29,9 @@ namespace Business.Concrete
 
 
 
-
+        [CacheRemoveAspect("ICarService.Get")]
         [ValidationAspect(typeof(CarValidator))]
-        [SecuredOperation("car.add,admin")]
+        [SecuredOperation("admin,car.add")]
         public IResult Add(Car car)
         {
             
@@ -48,13 +50,15 @@ namespace Business.Concrete
 
 
 
+        [CacheAspect]
         public IDataResult<List<Car>> GetAll()
         {
             return new SuccessDataResult<List<Car>>(_carDal.GetAll());
         }
 
 
-
+        //PerformanceAspect, AspectInterceptorSelector içine taşındı.
+        [CacheAspect]
         public IDataResult<Car> GetById(int carId)
         {
             return new DataResult<Car> (_carDal.Get(c=> c.CarId == carId),true);
@@ -81,15 +85,27 @@ namespace Business.Concrete
             return new DataResult<List<Car>>(_carDal.GetAll(c => c.ColorId == colorId),true);
         }
 
+        
 
-
+        [CacheRemoveAspect("ICarService.Get")]
         public IResult Update(Car car)
         {
             _carDal.Update(car);
             return new SuccessResult(Messages.CarUpdated);
         }
 
-       
+
+
+        [ValidationAspect(typeof(CarValidator))]
+        [TransactionScopeAspect]
+        public IResult TransactionalOperation(Car car)
+        {
+            _carDal.Update(car);
+            _carDal.Add(car);
+            return new SuccessResult();
+        }
+
+
 
     }
 }
